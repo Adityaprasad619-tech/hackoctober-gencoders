@@ -1,6 +1,8 @@
 # VYOM+ — Intelligent Voucher Classification
 
-> An open-source AI-powered accounting intelligence engine that understands structured financial transactions and automatically determines the appropriate accounting voucher category.
+> **From Transaction Data to Accounting Intelligence**
+
+An open-source AI-powered accounting intelligence system that understands structured financial transactions and automatically determines the appropriate accounting voucher category.
 
 ---
 
@@ -12,17 +14,17 @@
 
 **From Transaction Data to Accounting Intelligence.**
 
-VYOM+ is an AI-powered voucher classification system that analyses structured transaction information and predicts the appropriate accounting voucher category using an open-source Large Language Model (LLM), structured reasoning, validation rules and contextual transaction analysis.
+VYOM+ is an AI-powered voucher classification system that analyses structured transaction information and predicts the appropriate accounting voucher category using an open-source Large Language Model (LLM), accounting-aware reasoning, validation rules, confidence scoring, and explainable classification.
 
 ---
 
 ## 2. Problem Statement
 
-Modern accounting systems process large volumes of financial transactions such as purchases, sales, payments, receipts, returns, stock movements, payroll, imports and exports.
+Modern accounting systems process large volumes of financial transactions such as purchases, sales, payments, receipts, returns, stock movements, payroll, imports, and exports.
 
-Although the transaction data may already be structured, determining the correct accounting voucher type still requires understanding the relationship between multiple fields.
+Although transaction data may already be structured, determining the correct accounting voucher type requires understanding the relationship between multiple fields.
 
-For example, the distinction between:
+For example, distinguishing between:
 
 - Purchase vs Sales
 - Purchase Return vs Sales Return
@@ -36,7 +38,7 @@ For example, the distinction between:
 
 cannot reliably be determined from a single keyword.
 
-The challenge is therefore to build an intelligent system that understands the complete transaction context and predicts the most appropriate voucher category.
+The challenge is therefore to build an intelligent system that understands the **complete transaction context** and predicts the most appropriate voucher category.
 
 The input dataset contains structured transaction information while the voucher-type field is intentionally missing.
 
@@ -48,9 +50,9 @@ VYOM+ acts as an intelligent classification layer between structured transaction
 
 The system accepts an Excel dataset containing transaction records and analyses multiple fields including:
 
-- Supplier / Seller
+- Seller / Supplier
 - Buyer / Customer
-- Invoice information
+- Invoice number and date
 - Item descriptions
 - Quantity
 - Taxable value
@@ -67,18 +69,18 @@ The system accepts an Excel dataset containing transaction records and analyses 
 - Delivery information
 - Other transaction metadata
 
-The system then:
+### Core Process
 
-1. Reads the transaction dataset.
-2. Normalises and validates the input.
-3. Builds a contextual representation of each transaction.
-4. Analyses accounting signals.
-5. Uses an open-source LLM as the primary intelligence layer.
-6. Generates a structured voucher prediction.
-7. Assigns a confidence score.
-8. Produces supporting reasoning/evidence.
-9. Validates the prediction.
-10. Exports machine-readable results.
+1. Read the transaction dataset.
+2. Validate and normalise the input.
+3. Build a contextual representation of each transaction.
+4. Extract accounting-relevant signals.
+5. Analyse the transaction using an open-source LLM.
+6. Predict the appropriate voucher category.
+7. Validate the prediction.
+8. Calculate a confidence score.
+9. Generate supporting evidence.
+10. Produce structured machine-readable output.
 
 ---
 
@@ -87,38 +89,26 @@ The system then:
 We propose a **Hybrid AI Voucher Classification Engine** combining:
 
 - Structured transaction preprocessing
-- Accounting-aware feature extraction
+- Accounting-aware signal extraction
 - Rule-based validation
-- Semantic representation
-- Open-source LLM classification
+- Semantic transaction representation
+- Open-source LLM reasoning
 - Confidence estimation
 - Structured output validation
 - Explainable classification
 
-### High-Level Workflow
+### High-Level Solution
 
 ```mermaid
 flowchart LR
-
-A[Excel Transaction Dataset]
---> B[Data Ingestion]
-
-B --> C[Validation & Normalisation]
-
-C --> D[Transaction Context Builder]
-
-D --> E[Accounting Signal Extraction]
-
-E --> F[Open-Source LLM]
-
-F --> G[Candidate Voucher Classification]
-
-G --> H[Rule & Consistency Validator]
-
-H --> I[Confidence Scoring]
-
-I --> J[Explanation Generator]
-
-J --> K[Structured Output]
-
-K --> L[Dashboard / Excel / JSON]
+    A["Excel Transaction Dataset"] --> B["Data Ingestion"]
+    B --> C["Validation & Normalisation"]
+    C --> D["Transaction Context Builder"]
+    D --> E["Accounting Signal Extraction"]
+    E --> F["Open-Source LLM"]
+    F --> G["Voucher Classification"]
+    G --> H["Rule & Consistency Validation"]
+    H --> I["Confidence Scoring"]
+    I --> J["Explanation & Evidence"]
+    J --> K["Structured Output"]
+    K --> L["Dashboard / JSON / Excel"]
